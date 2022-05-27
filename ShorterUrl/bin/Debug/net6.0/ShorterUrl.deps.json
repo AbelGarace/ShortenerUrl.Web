@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "ShorterUrl/1.0.0": {
+        "runtime": {
+          "ShorterUrl.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ShorterUrl/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

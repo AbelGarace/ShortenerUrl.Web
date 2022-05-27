@@ -1,0 +1,79 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Short your Url";
+}
+<div class="row">
+    <div class="col-12 text-center">
+        @if (Model?.SuccessMessage != null)
+        {
+            <div class="alert alert-success text-white font-weight-bold" role="alert">
+                @Model?.SuccessMessage
+            </div>
+        }
+        @if (Model?.ErrorMessage != null)
+        {
+            <div class="alert alert-danger text-white font-weight-bold" role="alert">
+                @Model?.ErrorMessage
+            </div>
+        }
+    </div>
+</div>
+
+<form method"post" asp-page-handler="CreateShortUrl">
+
+    <div class="row text-center py-3 mt-3">
+        <div class="col-6 mx-auto">
+
+            <div class="input-group input-group-dynamic mb-4">
+
+                <input asp-for="Url" type="text" class="form-control" placeholder="Url" aria-label="Url" aria-describedby="basic-addon1">
+            </div>
+
+            @if (!Model.Reset)
+            {
+                <div class="col-12 mx-auto mt-4">
+                    <button type="submit" class="btn btn-dark w-auto me-1 mb-0">Create Short Link</button>
+                </div>
+            }
+            else
+            {
+                <div class="col-12 mx-auto mt-4">
+                    <a href="/Index" class="btn btn-info w-auto me-1 mb-0">Reset</a>
+                </div>               
+            }
+
+        </div>
+    </div>
+</form>
+
+@if (Model.LinkVm.ShortId != null)
+{
+    <div class="card">
+        <div class="table-responsive">
+            <table class="table align-items-center mb-0">
+                <thead>
+                    <tr>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Original Url</th>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Short Url</th>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Clicks</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <p class="text-xs font-weight-bold mb-0">@Model.LinkVm.Url</p>
+                        </td>
+                        <td>
+                            <p class="text-xs font-weight-bold mb-0">@Model.LinkVm.ShortUrl</p>
+                        </td>
+                         <td>
+                            <p class="text-xs font-weight-bold mb-0">@Model.LinkVm.Clicks</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+}
+
